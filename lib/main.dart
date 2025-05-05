@@ -37,7 +37,7 @@ import 'app/data/models/user_model.dart'
 import 'dart:io';
 
 Future<void> main() async {
-  print('Starting Grocery App....');
+  print('Starting Grocery App.....');
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase
