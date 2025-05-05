@@ -4,34 +4,26 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.0.0'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
 
-    - name: Install dependencies
-      run: flutter pub get
+      - name: Install dependencies
+        run: flutter pub get
 
-    - name: Run flutter doctor
-      run: flutter doctor
+      - name: Build APK
+        run: flutter build apk
 
-    - name: Build APK
-      run: flutter build apk --release
-
-    - name: Upload APK as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: app-release-apk
-        path: build/app/outputs/flutter-apk/app-release.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: apk-artifact
+          path: build/app/outputs/flutter-apk/app-release.apk
