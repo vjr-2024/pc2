@@ -1,0 +1,84 @@
+name: grocery_app
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+
+environment: 
+  sdk: '>=2.16.0 <3.0.0'
+
+dependencies: 
+  cupertino_icons:
+  get: # for state management and context less stuff
+  flutter_screenutil: # make app responsive
+  shared_preferences: # shared preferences persistence key value store
+  flutter_launcher_icons: # change app icon
+  change_app_package_name: # change package name
+  rename_app: # rename app
+  flutter_svg: # for svg icons
+  carousel_slider: # for image slider
+  badges: # for badges
+  flutter_animate: # for animation
+  google_fonts: ^6.2.1
+  path_provider: ^2.0.14 # Or the latest version
+  permission_handler: ^11.3.1
+  google_maps_flutter: ^2.1.1
+  geolocator: ^9.0.1
+  http: ^1.2.0          # For HTTP requests to the Directions API
+  flutter_polyline_points: ^2.0.0  # For decoding polyline routes
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+  firebase_auth: ^5.3.4  # or the latest compatible version
+  cloud_firestore: ^5.6.0  # make sure it's compatible
+  flutter_secure_storage: ^9.0.0  # or the latest compatible version
+  firebase_core: ^3.10.0  # Updated to match firebase_messaging
+  firebase_database: ^11.2.0 # For Realtime Database
+  firebase_storage: ^12.3.7
+  firebase_messaging: ^15.2.0  # Updated to latest version
+  flutter_local_notifications: ^18.0.1  # Upgraded to fix version conflict
+  csv: ^5.0.2  # Add this line (latest version)
+
+dev_dependencies:
+  mockito:
+  flutter_lints:
+  build_runner: ^2.0.0
+  hive_generator: ^2.0.1
+  flutter_launcher_icons: ^0.13.1
+
+  integration_test:
+    sdk: flutter
+
+  flutter_test: 
+    sdk: flutter
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/app_icon_foreground.png"
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/vectors/
+    - assets/fonts/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 300
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 700
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+          weight: 300
+        - asset: assets/fonts/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+          weight: 900
