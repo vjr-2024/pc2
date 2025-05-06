@@ -1,7 +1,10 @@
-name: Build APK
+name: Flutter CI
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -10,22 +13,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    # Step 1: Check out the repository
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.19.5'  # Update to your desired version
+    # Step 2: Set up Flutter
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
 
-      - name: Install dependencies
-        run: flutter pub get
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: flutter pub get
+      working-directory: workspaces/pc2/pc_app
 
-      - name: Build APK
-        run: flutter build apk --release
+    # Step 4: Run tests
+    - name: Run tests
+      run: flutter test
+      working-directory: workspaces/pc2/pc_app
 
-      - name: Upload release APK
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+    # Step 5: Build the app (optional, for example APK or IPA)
+    - name: Build APK
+      run: flutter build apk --release
+      working-directory: workspaces/pc2/pc_app
+
+    # Step 6: Upload build artifacts
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-release-apk
+        path: workspaces/pc2/pc_app/build/app/outputs/flutter-apk/app-release.apk
